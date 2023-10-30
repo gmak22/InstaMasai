@@ -10,8 +10,9 @@ const auth = (req,res,next) => {
     else{
         jwt.verify(token, 'masai', (err, decoded)=>{
             if(decoded){
+                console.log("decoded",decoded)
                 req.body.name = decoded.name
-                req.body.userID = decoded.userID
+                req.body.userID = decoded.userId
                 next()
             }
             else{
